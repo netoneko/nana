@@ -7,20 +7,6 @@ GIT
       nanoc (~> 3.6)
       nokogiri (~> 1.6)
 
-GIT
-  remote: https://github.com/nanoc/nanoc-cli.git
-  revision: 2c4b545949276b467ab1d1b3eb62e4c33211d716
-  specs:
-    nanoc-cli (4.0.0a1)
-      cri (~> 2.3)
-      nanoc-core (~> 4.0.0a1)
-
-GIT
-  remote: https://github.com/nanoc/nanoc-core.git
-  revision: fca1889955e7ab8940fc7066f864c0f825560c49
-  specs:
-    nanoc-core (4.0.0a1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -78,8 +64,7 @@ DEPENDENCIES
   database_cleaner
   mongoid
   mongoid-tree
-  nanoc-cli!
-  nanoc-core!
+  nanoc
   nanoc-toolbox!
   pry
   rake

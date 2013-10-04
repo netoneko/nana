@@ -4,6 +4,8 @@ require "bundler"
 env = (ENV['RACK_ENV'] || ENV['RAILS_ENV'] || "development").to_sym
 Bundler.require :default, env
 
+require "nanoc/cli"
+
 Mongoid.load! File.join(File.dirname(__FILE__), "../config/mongoid.yml"), env
 
 require_relative "../lib/nana"

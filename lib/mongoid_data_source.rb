@@ -12,15 +12,13 @@ class MongoidDataSource < Nanoc::DataSource
   def load_objects(dir_name, kind, klass)
     if klass == Nanoc::Item
       Nana::Page.all.map do |page|
-        path = "#{page.path.empty? ? '/index' : page.path}.erb"
-        content = Nanoc::TextualContent.new(page.content, path)
-        Nanoc::Item.new(content, {page: page}, path)
+        Nanoc::Item.new(page.content, {page: page}, page.path)
       end
     elsif klass == Nanoc::Layout
-      Nanoc::FilesystemTools.all_files_in(dir_name).map do |path|
-        content = Nanoc::TextualContent.new(File.read(path), File.absolute_path(path))
-        Nanoc::Layout.new(content, {}, "/#{File.basename(path)}")
-      end
+      Dir.open(dir_name).map do |filename|
+        path = File.join(dir_name, filename)
+        Nanoc::Layout.new(File.read(path), {}, File.basename(path)) unless File.directory? path
+      end.compact
     end
   end
 end

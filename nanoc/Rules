@@ -1,22 +1,29 @@
 #!/usr/bin/env ruby
 
-compile '/stylesheet.*' do
-  write '/style.css'
+compile '/stylesheet/' do
+  # don’t filter or layout
 end
 
-compile '/**/*' do
+compile '*' do
   if item.binary?
-    write item.identifier
+    # don’t filter binary items
   else
     filter :erb
-    layout '/default.html'
-
-    if item.identifier == "/index.erb"
-      write item.identifier.with_ext('html')
-    else
-      write item.identifier.in_dir.with_ext('html')
-    end
+    layout 'default.html'
   end
 end
 
-layout '/**/*', :erb
+route '/stylesheet/' do
+  '/style.css'
+end
+
+route '*' do
+  if item.binary?
+    # Write item with identifier /foo/ to /foo.ext
+    item.identifier.chop + '.' + item[:extension]
+  else
+    item.identifier + 'index.html'
+  end
+end
+
+layout '*', :erb
