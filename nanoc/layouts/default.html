@@ -13,7 +13,7 @@
       <%= yield %>
     </div>
     <div id="sidebar">
-      <%= render_menu root_menu, collection_tag: 'ul' %>
+      <%= render_menu root_menu(item[:page]), collection_tag: 'ul' %>
     </div>
   </body>
 </html>

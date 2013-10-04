@@ -13,9 +13,7 @@ module Nana
     validates_presence_of :content, :title
     after_rearrange :rebuild_path
 
-    def link
-      "/#{slug}"
-    end
+    alias_method :link, :path
 
     private
 
