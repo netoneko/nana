@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title><%= @item[:page].title %></title>
+    <title><%= item[:page].title %></title>
     <link rel="stylesheet" href="/style.css">
 
     <!-- you don't need to keep this, but it's cool for stats! -->
@@ -10,10 +10,11 @@
   </head>
   <body>
     <div id="main">
+      <h1><%= item[:page].title %></h1>
       <%= yield %>
     </div>
     <div id="sidebar">
-      <%= render_menu root_menu(item[:page]), collection_tag: 'ul' %>
+      <%= render_menu root_menu, collection_tag: 'ul' %>
     </div>
   </body>
 </html>

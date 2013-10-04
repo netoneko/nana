@@ -54,6 +54,13 @@ data_sources:
     # the file will be considered as binary.
     text_extensions: [ 'coffee', 'css', 'erb', 'haml', 'handlebars', 'hb', 'htm', 'html', 'js', 'less', 'markdown', 'md', 'ms', 'mustache', 'php', 'rb', 'sass', 'scss', 'slim', 'txt', 'xhtml', 'xml' ]
 
+  -
+    type: filesystem_verbose
+    items_root: /
+    layouts_root: /
+    encoding: utf-8
+    text_extensions: [ 'coffee', 'css', 'erb', 'haml', 'handlebars', 'hb', 'htm', 'html', 'js', 'less', 'markdown', 'md', 'ms', 'mustache', 'php', 'rb', 'sass', 'scss', 'slim', 'txt', 'xhtml', 'xml' ]
+
 # Configuration for the “check” command, which run unit tests on the site.
 checks:
   # Configuration for the “internal_links” checker, which checks whether all

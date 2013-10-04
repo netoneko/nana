@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-compile '/stylesheet/' do
+compile '/stylesheet*' do
   # don’t filter or layout
 end
 
@@ -13,7 +13,7 @@ compile '*' do
   end
 end
 
-route '/stylesheet/' do
+route '*.css' do
   '/style.css'
 end
 

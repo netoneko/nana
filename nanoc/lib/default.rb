@@ -20,7 +20,7 @@ def root
   @root ||= Nana::Page.root
 end
 
-def root_menu(item_page)
+def root_menu
   @root_menu ||= [
       as_menu_item(root),
       root.children.map do |page|
