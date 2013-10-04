@@ -10,7 +10,12 @@ compile '/**/*' do
   else
     filter :erb
     layout '/default.html'
-    write item.identifier.in_dir.with_ext('html')
+
+    if item.identifier == "/index.erb"
+      write item.identifier.with_ext('html')
+    else
+      write item.identifier.in_dir.with_ext('html')
+    end
   end
 end
 
