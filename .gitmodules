@@ -1,0 +1,3 @@
+[submodule "app/public/grande"]
+	path = app/public/grande
+	url = git@github.com:netoneko/grande.js.git

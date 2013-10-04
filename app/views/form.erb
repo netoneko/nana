@@ -1,1 +1,25 @@
-haha
+<!doctype html>
+<html>
+<head>
+  <title>grande.js</title>
+  <meta charset="utf-8">
+  <meta name="description" content="grande.js: a way for you to express yourself">
+
+  <link href="grande/css/menu.css" rel="stylesheet">
+  <link href="grande/css/editor.css" rel="stylesheet">
+</head>
+
+<body class="g-body">
+
+<section>
+  <article class="content">
+    <%= @page.content %>
+  </article>
+</section>
+
+<script type="text/javascript" src="grande/js/grande.js"></script>
+<script type="text/javascript">
+    grande.bind(document.querySelectorAll("article"), {allowImages: true, animate: true});
+</script>
+</body>
+</html>
