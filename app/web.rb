@@ -8,5 +8,10 @@ module Nana
 
       erb :form
     end
+
+    post '/update' do
+      Nana::Page.find(params[:id]).update_attributes(params)
+      redirect '/'
+    end
   end
 end
