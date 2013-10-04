@@ -28,7 +28,8 @@ describe MongoidDataSource do
                            "/child2/child3",
                            "/child2/child3/index.html",
                            "/child2/index.html",
-                           "/index.html"]
+                           "/index.html",
+                           "/style.css"]
   end
 
   def find_output
