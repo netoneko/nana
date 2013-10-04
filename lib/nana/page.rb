@@ -18,10 +18,3 @@ module Nana
     end
   end
 end
-
-Nana::Page.delete_all
-
-root = Nana::Page.create(content: "Root! HAHA")
-child1 = Nana::Page.create(content: "Child1", parent: root, slug: "child1")
-child2 = Nana::Page.create(content: "Child2", parent: root, slug: "child2")
-child3 = Nana::Page.create(content: "Child3", parent: child2, slug: "child3")

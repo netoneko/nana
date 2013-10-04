@@ -26,6 +26,7 @@ GEM
     colored (1.2)
     cri (2.4.0)
       colored (>= 1.2)
+    database_cleaner (0.9.1)
     diff-lcs (1.2.4)
     i18n (0.6.5)
     method_source (0.8.2)
@@ -59,6 +60,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  database_cleaner
   mongoid
   mongoid-tree
   nanoc-cli!

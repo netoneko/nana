@@ -6,6 +6,6 @@ Bundler.require :default, env
 
 Mongoid.load! File.join(File.dirname(__FILE__), "../config/mongoid.yml"), env
 
-require File.join(File.dirname(__FILE__), "../lib/nana")
-
+require_relative "../lib/nana"
+require_relative "../lib/mongoid_data_source"
 

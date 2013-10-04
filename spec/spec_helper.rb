@@ -5,7 +5,13 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
+ENV["RACK_ENV"] = "test"
+
 require File.join(File.dirname(__FILE__), "../config/environment")
+
+Bundler.require :default, :test
+
+output_path = File.join(File.dirname(__FILE__), "../nanoc/output")
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
@@ -17,4 +23,19 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = 'random'
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+    FileUtils.rm_rf output_path
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+    FileUtils.rm_rf output_path
+  end
 end

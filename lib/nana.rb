@@ -1,4 +1,4 @@
-require "nana/page"
+require_relative "nana/page"
 
 module Nana
 
