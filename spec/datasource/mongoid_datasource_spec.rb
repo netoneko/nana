@@ -5,10 +5,10 @@ describe MongoidDataSource do
   let(:path) { File.join File.dirname(__FILE__), "../../nanoc" }
   let(:output) { Dir.new(File.join path, "output") }
 
-  let!(:root) { Nana::Page.create(content: "Root! HAHA") }
-  let!(:child1) { Nana::Page.create(content: "Child1", parent: root, slug: "child1") }
-  let!(:child2) { Nana::Page.create(content: "Child2", parent: root, slug: "child2") }
-  let!(:child3) { Nana::Page.create(content: "Child3", parent: child2, slug: "child3") }
+  let!(:root) { Nana::Page.create(content: "Root! HAHA", title: "Index") }
+  let!(:child1) { Nana::Page.create(content: "Child1", parent: root, slug: "child1", title: "Child 1") }
+  let!(:child2) { Nana::Page.create(content: "Child2", parent: root, slug: "child2", title: "Child 2") }
+  let!(:child3) { Nana::Page.create(content: "Child3", parent: child2, slug: "child3", title: "Child 3") }
 
   before(:each) do
     Dir.chdir path do

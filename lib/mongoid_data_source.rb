@@ -14,7 +14,7 @@ class MongoidDataSource < Nanoc::DataSource
       Nana::Page.all.map do |page|
         path = "#{page.path.empty? ? '/index' : page.path}.erb"
         content = Nanoc::TextualContent.new(page.content, path)
-        Nanoc::Item.new(content, {}, path)
+        Nanoc::Item.new(content, {page: page}, path)
       end
     elsif klass == Nanoc::Layout
       Nanoc::FilesystemTools.all_files_in(dir_name).map do |path|

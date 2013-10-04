@@ -4,12 +4,18 @@ module Nana
     include Mongoid::Timestamps
     include Mongoid::Tree
 
+    field :title, type: String
+
     field :content, type: String
     field :slug
     field :path
 
-    validates_presence_of :content
+    validates_presence_of :content, :title
     after_rearrange :rebuild_path
+
+    def link
+      "/#{slug}"
+    end
 
     private
 

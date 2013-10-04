@@ -10,9 +10,19 @@ end
 
 namespace :db do
   task :seed => :environment do
-    root = Nana::Page.create(content: "This is index page")
-    about = Nana::Page.create(content: "About Us", parent: root, slug: "about")
-    tech = Nana::Page.create(content: "Technologies", parent: root, slug: "tech")
-    ruby = Nana::Page.create(content: "Ruby", parent: tech, slug: "ruby")
+    root = Nana::Page.create!(content: "This is index page", title: "Home")
+    about = Nana::Page.create!(title: "About Us", content: "About page", parent: root, slug: "about")
+    tech = Nana::Page.create!(title: "Technologies", content: "Tech page", parent: root, slug: "tech")
+    ruby = Nana::Page.create!(title: "Ruby", content: "We do Ruby", parent: tech, slug: "ruby")
   end
+
+  task :cleanup => :environment do
+    Nana::Page.delete_all
+  end
+
+  task :reseed => [:cleanup, :seed]
+end
+
+task :console => :environment do
+  binding.pry
 end
