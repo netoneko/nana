@@ -8,6 +8,8 @@ gem "mongoid-tree", require: "mongoid/tree"
 
 gem "rake"
 
+gem "sinatra"
+
 group :development, :test do
   gem "pry"
 end
