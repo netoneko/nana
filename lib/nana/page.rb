@@ -11,14 +11,14 @@ module Nana
     field :path
 
     validates_presence_of :content, :title
-    after_rearrange :rebuild_path
+    validates_uniqueness_of :path
 
-    alias_method :link, :path
+    after_rearrange :rebuild_path
 
     private
 
     def rebuild_path
-      self.path = self.ancestors_and_self.collect(&:slug).join('/')
+      self.path = self.root? ? "/" : self.ancestors_and_self.collect(&:slug).join("/")
     end
   end
 end

@@ -5,33 +5,40 @@
   <meta charset="utf-8">
   <meta name="description" content="grande.js: a way for you to express yourself">
 
-  <link href="grande/css/menu.css" rel="stylesheet">
-  <link href="grande/css/editor.css" rel="stylesheet">
+  <link href="/grande/css/menu.css" rel="stylesheet">
+  <link href="/grande/css/editor.css" rel="stylesheet">
 </head>
 
 <body class="g-body">
 
 <section>
-  <article class="content">
+  <% if @page.errors.any? %>
+    <%= @page.errors.messages %>
+  <% end %>
+
+  <article class="content" contenteditable="true">
     <%= @page.content %>
   </article>
 
-  <form action="/update" method="post">
-    <input type="hidden" id="id" name="id" value="<%= @page.id %>">
+  <form action="/page/<%= @page.id %>" method="post">
+    Title <input type="text" name="title" value="<%= @page.title %>"><br/>
+    Slug <input type="text" name="slug" value="<%= @page.slug %>">
+
     <textarea type="hidden" id="content" name="content" style="display: none;"></textarea>
 
     <button>Save</button>
   </form>
 </section>
 
-<script type="text/javascript" src="grande/js/grande.js"></script>
+<script type="text/javascript" src="/grande/js/grande.js"></script>
 <script type="text/javascript">
-    var article = document.querySelectorAll("article");
-
-    grande.bind(article, {allowImages: true, animate: true});
+    grande.bind();
 
     document.querySelector("button").addEventListener("click", function (e) {
-        document.querySelector("#content").value = article[0].innerHTML;
+        var article = document.querySelector(".g-body article");
+        var content = article.innerHTML;
+
+        document.querySelector("#content").value = content;
       }
     );
 </script>

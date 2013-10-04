@@ -7,7 +7,7 @@ include Nanoc::Toolbox::Helpers::Navigation
 def as_menu_item(page)
   {
       title: page.title,
-      link: page.link,
+      link: page.path,
       subsections: []
   }
 end
